@@ -1,0 +1,71 @@
+<?php 
+
+$currentUrl = $block->getPageUrl();
+$siteName = $block->getStoreName();
+
+// META TITLE / DESCRIPTION
+$prefix = $block->getPrefix() ? $block->getPrefix() . " ":"";
+$postfix = $block->getPostfix() ? " " . $block->getPostfix() :"";
+$pageTitle = $prefix . $block->getPageTitle() . $postfix;
+$description = $block->getPageDescription();
+
+// TWITTER
+$twitterEnabled = $block->twitterEnabled();
+$twitterImage = $block->getTwitterImage();
+$twitterAccount = $block->getTwitterAccount();
+
+// FACEBOOK
+$facebookEnabled = $block->facebookEnabled();
+$facebookImage = $block->getFacebookImage();
+
+// PAGE TYPE (CMS / PRODUCT / CATEGORY / SEARCH)
+$pageType = $this->getRequest()->getFullActionName();
+
+$currentProductImage = "";
+
+// IF PRODUCT PAGE SHOW ADD PRODUCT IMAGE
+if($pageType == "catalog_product_view")
+{
+    if($block->getCurrentProductImage())
+    {
+        $currentProductImage = $block->getCurrentProductImage();
+    }
+    else
+    {
+        $currentProductImage = $facebookImage;
+    }
+}
+
+?>
+
+
+<?php if($twitterEnabled):?>
+<!-- Twitter Share Meta Tags -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="<?= $escaper->escapeHtml($currentUrl); ?>" />
+<meta name="twitter:description" content="<?= $escaper->escapeHtml($description); ?>" />
+<meta name="twitter:url" content="<?= $escaper->escapeHtml($pageTitle); ?>" />
+<meta name="twitter:creator" content="<?= $escaper->escapeHtml($twitterAccount); ?>">
+<meta name="twitter:site" content="<?= $escaper->escapeHtml($siteName); ?>" />
+<?php if($pageType == "catalog_product_view"): ?>
+<meta name="twitter:image" content="<?= $escaper->escapeHtml($currentProductImage); ?>">
+<?php else: ?>
+<meta name="twitter:image" content="<?= $escaper->escapeHtml($twitterImage); ?>">
+<?php endif; ?>
+<!-- Twitter Share Meta Tags -->
+<?php endif; ?>
+
+<?php if($facebookEnabled):?>
+<!-- Facebook Share Meta Tags -->
+<meta property="og:site_name" content="<?= $escaper->escapeHtml($siteName); ?>">
+<meta property="og:url" content="<?= $escaper->escapeHtml($currentUrl); ?>" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="<?= $escaper->escapeHtml($pageTitle); ?>" />
+<meta property="og:description" content="<?= $escaper->escapeHtml($description); ?>" />
+<?php if($pageType == "catalog_product_view"): ?>
+<meta property="og:image" content="<?= $escaper->escapeHtml($currentProductImage); ?>" />
+<?php else: ?>
+<meta property="og:image" content="<?= $escaper->escapeHtml($facebookImage); ?>" />
+<?php endif; ?>
+<!-- Facebook Share Meta Tags -->
+<?php endif; ?>

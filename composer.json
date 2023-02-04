@@ -1,0 +1,24 @@
+{
+    "name": "psolovyov/module-metasharing",
+    "description": "Twitter and Facebook sharing meta tags for Magento 2",
+    "type": "magento2-module",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Paul Solovyov"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": 
+    {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "PaulSolovyov\\MetaSharing\\": ""
+        }
+    }
+}
