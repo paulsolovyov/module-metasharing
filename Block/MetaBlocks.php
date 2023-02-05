@@ -7,6 +7,7 @@ use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\UrlInterface;
 
 class MetaBlocks extends \Magento\Framework\View\Element\Template
 {
@@ -48,13 +49,20 @@ class MetaBlocks extends \Magento\Framework\View\Element\Template
      */
     protected $registry;
 
-	/**
+    /**
+     * @var UrlInterface
+     */
+    protected $urlInterface;
+
+
+    /**
      * @param Context $context
      * @param StoreManagerInterface $storeManager
      * @param Title $pageTitle
      * @param Config $pageDescription
      * @param ScopeConfigInterface $scopeConfig
      * @param Registry $registry
+     * @param UrlInterface $urlInterface
      */
 	public function __construct(
 		Context $context,
@@ -62,7 +70,8 @@ class MetaBlocks extends \Magento\Framework\View\Element\Template
         Title $pageTitle,
         Config $pageDescription,
         ScopeConfigInterface $scopeConfig,
-        Registry $registry
+        Registry $registry,
+        UrlInterface $urlInterface
 	)
 	{
 		$this->storeManager = $storeManager;
@@ -70,6 +79,7 @@ class MetaBlocks extends \Magento\Framework\View\Element\Template
         $this->pageDescription = $pageDescription;
         $this->scopeConfig = $scopeConfig;
         $this->registry = $registry;
+        $this->urlInterface = $urlInterface;
 
 		parent::__construct($context);
 	}
@@ -82,7 +92,7 @@ class MetaBlocks extends \Magento\Framework\View\Element\Template
     public function getPageUrl()
     {
         /* @phpstan-ignore-next-line */
-        $storeUrl = $this->storeManager->getStore()->getCurrentUrl();
+        $storeUrl = $this->urlInterface->getCurrentUrl();
 
         return $storeUrl;
     }

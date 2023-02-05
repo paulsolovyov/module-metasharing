@@ -1,12 +1,16 @@
 <?php 
 
 $currentUrl = $block->getPageUrl();
+
+// SITE NAME (GENERAL -> STORE INFORMATION -> STORE NAME)
 $siteName = $block->getStoreName();
 
 // META TITLE / DESCRIPTION
 $prefix = $block->getPrefix() ? $block->getPrefix() . " ":"";
 $postfix = $block->getPostfix() ? " " . $block->getPostfix() :"";
 $pageTitle = $prefix . $block->getPageTitle() . $postfix;
+
+// META DESCRIPTION
 $description = $block->getPageDescription();
 
 // TWITTER
