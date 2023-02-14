@@ -12,6 +12,9 @@
 ## Main Functionalities
 Twitter and Facebook sharing meta tags for Magento 2
 
+![image](https://user-images.githubusercontent.com/108321336/218646463-a39fd35c-578f-42f0-a5ba-370073641c2b.png)
+
+
 ## Installation
 \* = in production please use the `--keep-generated` option
 
@@ -27,7 +30,6 @@ Twitter and Facebook sharing meta tags for Magento 2
 ### Type 2: Composer
 
  - Make the module available in a composer repository for example:
-    - private repository `repo.magento.com`
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
@@ -35,19 +37,3 @@ Twitter and Facebook sharing meta tags for Magento 2
  - enable the module by running `php bin/magento module:enable PaulSolovyov_MetaSharing`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
-
-
-## Configuration
-
-
-
-
-## Specifications
-
-
-
-
-## Attributes
-
-
-
