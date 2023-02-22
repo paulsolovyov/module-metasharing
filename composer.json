@@ -1,5 +1,5 @@
 {
-    "name": "psolovyov/module-metasharing",
+    "name": "paulsolovyov/module-metasharing",
     "description": "Twitter and Facebook sharing meta tags for Magento 2",
     "type": "magento2-module",
     "license": "GPL-3.0-only",
