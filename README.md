@@ -33,7 +33,7 @@ Twitter and Facebook sharing meta tags for Magento 2
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require paulsolovyov/module-metasharing`
+ - Install the module composer by running `composer require paulsolovyov/module-metasharing:dev-master`
  - enable the module by running `php bin/magento module:enable PaulSolovyov_MetaSharing`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
